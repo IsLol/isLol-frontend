@@ -97,12 +97,21 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
+  color: #888 !important;
+  cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+#__next {
+    height: 100%;
+}
+
+.container {
+    height: 100%;
 }

@@ -1,0 +1,18 @@
+#container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#idPwWrap {
+    width: 100%;
+}
+
+#idPwWrap > input {
+    padding: 15px;
+}
+
+#loginForm {
+    width: 35%;
+}
