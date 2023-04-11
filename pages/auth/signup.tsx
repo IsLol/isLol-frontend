@@ -1,4 +1,5 @@
 import Inputs from '@/components/Input';
+import { Button } from 'react-bootstrap';
 import CenterForm from '@/components/layout/centerForm';
 
 function SiginUp() {
@@ -39,6 +40,11 @@ function SiginUp() {
   return (
     <CenterForm className="signup" title="회원가입">
       <Inputs inputs={inputProps} />
+      <div className="d-grid gap-2">
+        <Button variant="primary" size="lg">
+          가입하기
+        </Button>
+      </div>
     </CenterForm>
   );
 }
