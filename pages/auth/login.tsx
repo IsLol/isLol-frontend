@@ -20,7 +20,7 @@ function Login() {
   ];
 
   function handleClick() {
-    router.push('signup');
+    router.push('auth/signup');
   }
 
   return (
