@@ -10,12 +10,13 @@ function Login() {
       id: 1,
       type: 'text',
       placeholder: 'id',
-      margin: 'mb-2',
+      className: 'mb-2',
     },
     {
       id: 2,
       type: 'password',
       placeholder: 'password',
+      className: 'mb-4',
     },
   ];
 
@@ -23,11 +24,15 @@ function Login() {
     router.push('auth/signup');
   }
 
+  function login() {
+    router.push('content/main');
+  }
+
   return (
-    <CenterForm className="login" title="로그인">
+    <CenterForm className="login" title="로그인" defaultWidth="3">
       <Inputs inputs={inputProps} />
       <div className="d-grid gap-2">
-        <Button variant="primary" size="lg">
+        <Button variant="primary" size="lg" onClick={login}>
           로그인
         </Button>
       </div>

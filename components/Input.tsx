@@ -1,18 +1,19 @@
 import Form from 'react-bootstrap/Form';
-import styles from '@/pages/auth/login.module.css';
 
 interface InputProps {
   id: number;
   type: string;
   placeholder: string;
-  margin?: string;
+  className?: string;
 }
 
-function Input({ type, placeholder, margin }: InputProps) {
+function Input({ type, placeholder, className }: InputProps) {
   return (
-    <div className="mb-3" id={styles.idPwWrap}>
-      <Form.Control type={type} placeholder={placeholder} className={margin} />
-    </div>
+    <Form.Control
+      type={type}
+      placeholder={placeholder}
+      className={className + ' p-3'}
+    />
   );
 }
 
