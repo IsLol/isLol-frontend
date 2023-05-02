@@ -12,7 +12,7 @@ function Main() {
   ];
 
   return (
-    <div className="container-fluid px-0 h-100">
+    <div className="container-fluid px-0">
       <h2 className="text-center">검색</h2>
       <CenterForm className="login" defaultWidth="4">
         <InputGroup>
