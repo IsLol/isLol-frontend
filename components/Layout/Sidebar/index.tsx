@@ -1,17 +1,17 @@
 import { useRouter } from 'next/router';
 import styles from './Sidebar.module.css';
 
-interface MenuItem {
+export interface MenuItem {
   name: string;
   link: string;
 }
 
-interface SidebarProps {
+export interface SidebarProps {
   children: React.ReactNode;
   menuItems: MenuItem[];
 }
 
-function Sidebar({ children, menuItems }: SidebarProps) {
+export function Sidebar({ children, menuItems }: SidebarProps) {
   const router = useRouter();
 
   const handleMenuItemClick = (link: string) => {

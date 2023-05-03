@@ -1,6 +1,5 @@
-import { Inputs } from '@components';
+import { Inputs, CenterForm } from '@components';
 import { Button } from 'react-bootstrap';
-import CenterForm from '@/components/layout/centerForm';
 
 function SiginUp() {
   const inputProps = [

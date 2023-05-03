@@ -1,13 +1,18 @@
 import { ReactNode } from 'react';
 
-interface LayoutProps {
+export interface LayoutProps {
   className?: string;
   title?: string;
   children: ReactNode;
   defaultWidth: string;
 }
 
-function CenterForm({ children, className, title, defaultWidth }: LayoutProps) {
+export function CenterForm({
+  children,
+  className,
+  title,
+  defaultWidth,
+}: LayoutProps) {
   return (
     <div className="row justify-content-center align-items-center no-gutters h-100">
       <div

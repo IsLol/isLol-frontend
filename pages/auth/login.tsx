@@ -1,8 +1,6 @@
 import { Button } from 'react-bootstrap';
-//import Inputs from '@/components/Input/Input';
-import { Inputs } from '@components';
+import { Inputs, CenterForm } from '@components';
 import { useRouter } from 'next/router';
-import CenterForm from '@/components/layout/centerForm';
 
 function Login() {
   const router = useRouter();

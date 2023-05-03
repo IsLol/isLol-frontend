@@ -1,4 +1,4 @@
-import CenterForm from '@/components/layout/centerForm';
+import CenterForm from '@/components/Layout/CenterForm';
 import { Inputs } from '@components';
 import { Button, InputGroup } from 'react-bootstrap';
 
