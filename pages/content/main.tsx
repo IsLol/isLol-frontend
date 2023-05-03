@@ -1,5 +1,5 @@
 import CenterForm from '@/components/layout/centerForm';
-import Inputs from '@/components/Input';
+import { Inputs } from '@components';
 import { Button, InputGroup } from 'react-bootstrap';
 
 function Main() {
