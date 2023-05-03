@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import styles from './Sidebar.module.css';
+import styles from './index.module.scss';
 
 export interface MenuItem {
   name: string;
