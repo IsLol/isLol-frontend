@@ -1,4 +1,4 @@
-// import Sidebar from '@/components/layout/sidebar';
+// import Sidebar from '@component/layout/sidebar';
 
 function Admin() {
   return <></>;
