@@ -1,17 +1,32 @@
 import { useRouter } from 'next/router';
 import styles from './index.module.scss';
+import classNames from 'classnames/bind';
 
 export interface MenuItem {
   name: string;
-  link: string;
+  id: string;
 }
 
 export interface SidebarProps {
   children: React.ReactNode;
-  menuItems: MenuItem[];
 }
 
-export function Sidebar({ children, menuItems }: SidebarProps) {
+const LEFT_MENU: MenuItem[] = [
+  {
+    name: '관리자 메인화면',
+    id: '0',
+  },
+  {
+    name: '회원관리',
+    id: '1',
+  },
+  {
+    name: '게시판관리',
+    id: '2',
+  },
+];
+const cx = classNames.bind(styles);
+export function Sidebar({ children }: SidebarProps) {
   const router = useRouter();
 
   const handleMenuItemClick = (link: string) => {
@@ -19,17 +34,17 @@ export function Sidebar({ children, menuItems }: SidebarProps) {
   };
 
   return (
-    <div className={styles.container}>
-      <aside className={styles.sidebar}>
+    <div className={cx('sidebar')}>
+      <aside className={cx('sidebar__aside')}>
         <ul>
-          {menuItems.map((item) => (
-            <li key={item.link}>
-              <a onClick={() => handleMenuItemClick(item.link)}>{item.name}</a>
+          {LEFT_MENU.map((item) => (
+            <li key={item.id}>
+              <span>{item.name}</span>
             </li>
           ))}
         </ul>
       </aside>
-      <main className={styles.main}>{children}</main>
+      <main>{children}</main>
     </div>
   );
 }

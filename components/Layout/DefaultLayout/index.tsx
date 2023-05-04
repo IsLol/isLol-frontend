@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 import styles from './index.module.scss';
+import Sidebar from '../Sidebar';
 
 const cx = classNames.bind(styles);
 
@@ -19,9 +20,8 @@ export const DefaultLayout = ({
   children,
 }: DefaultLayoutProps) => {
   return (
-    <div>
-      디폴트 레이아웃 테스트입니다.
-      {children}
+    <div className={cx('default-layout')}>
+      <Sidebar>{children}</Sidebar>
     </div>
   );
 };
