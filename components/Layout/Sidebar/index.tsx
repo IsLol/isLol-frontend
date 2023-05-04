@@ -3,8 +3,14 @@ import styles from './index.module.scss';
 import classNames from 'classnames/bind';
 
 export interface MenuItem {
-  name: string;
-  id: string;
+  menuName: string;
+  menuId: string;
+}
+
+export interface MenuSubItem {
+  menuId: string;
+  subMenuName: string;
+  subMenuId: string;
 }
 
 export interface SidebarProps {
@@ -13,19 +19,54 @@ export interface SidebarProps {
 
 const LEFT_MENU: MenuItem[] = [
   {
-    name: '관리자 메인화면',
-    id: '0',
+    menuName: '관리자 메인화면',
+    menuId: '100',
   },
   {
-    name: '회원관리',
-    id: '1',
+    menuName: '회원관리',
+    menuId: '101',
   },
   {
-    name: '게시판관리',
-    id: '2',
+    menuName: '게시판관리',
+    menuId: '102',
   },
 ];
+
+const LEFT_SUB_MENU: MenuSubItem[] = [
+  {
+    menuId: '101',
+    subMenuName: '회원리스트',
+    subMenuId: '101100',
+  },
+  {
+    menuId: '101',
+    subMenuName: '내전참여 현황',
+    subMenuId: '101101',
+  },
+  {
+    menuId: '101',
+    subMenuName: '명예포인트 현황',
+    subMenuId: '101102',
+  },
+  {
+    menuId: '102',
+    subMenuName: '게시판관리1',
+    subMenuId: '102100',
+  },
+  {
+    menuId: '102',
+    subMenuName: '게시판관리2',
+    subMenuId: '102101',
+  },
+  {
+    menuId: '102',
+    subMenuName: '게시판관리3',
+    subMenuId: '102102',
+  },
+];
+
 const cx = classNames.bind(styles);
+
 export function Sidebar({ children }: SidebarProps) {
   const router = useRouter();
 
@@ -38,8 +79,20 @@ export function Sidebar({ children }: SidebarProps) {
       <aside className={cx('sidebar__aside')}>
         <ul>
           {LEFT_MENU.map((item) => (
-            <li key={item.id}>
-              <span>{item.name}</span>
+            <li key={item.menuId}>
+              <div>
+                <h2>{item.menuName}</h2>
+                <ul>
+                  {LEFT_SUB_MENU.map(
+                    (subItem) =>
+                      item.menuId === subItem.menuId && (
+                        <li key={subItem.subMenuId}>
+                          <h3>{subItem.subMenuName}</h3>
+                        </li>
+                      )
+                  )}
+                </ul>
+              </div>
             </li>
           ))}
         </ul>
