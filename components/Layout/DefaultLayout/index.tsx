@@ -15,13 +15,17 @@ export interface DefaultLayoutProps {
 }
 
 export const DefaultLayout = ({
-  layoutType = 'base',
+  layoutType = 'admin',
   title,
   children,
 }: DefaultLayoutProps) => {
   return (
     <div className={cx('default-layout')}>
-      <Sidebar>{children}</Sidebar>
+      {layoutType === 'admin' ? (
+        <Sidebar>{children}</Sidebar>
+      ) : (
+        <div>layout</div>
+      )}
     </div>
   );
 };
