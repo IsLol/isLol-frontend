@@ -91,8 +91,8 @@ export const Table = ({
               <tr
                 key={index}
                 className={cx({
-                  __highlight: thisRowHighlight,
-                  __rowHeight: rowHeight,
+                  '--highlight': thisRowHighlight,
+                  '--rowHeight': rowHeight,
                 })}
               >
                 {items &&
