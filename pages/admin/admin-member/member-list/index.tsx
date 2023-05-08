@@ -33,7 +33,6 @@ const index = () => {
                 item: '테스트1',
               },
             ],
-            rowHighlight: true,
           },
           {
             items: [
@@ -47,6 +46,7 @@ const index = () => {
                 item: '테스트2',
               },
             ],
+            rowHighlight: true,
           },
           {
             items: [
