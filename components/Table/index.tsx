@@ -73,7 +73,11 @@ export const Table = ({
                 style={{ ...(width && { width: width }) }}
               >
                 {isSortable ? (
-                  <Button onClick={() => onSort?.(headerId)}>
+                  <Button
+                    variant="text"
+                    underline
+                    onClick={() => onSort?.(headerId)}
+                  >
                     <span>{header}</span>
                   </Button>
                 ) : (

@@ -1,3 +1,74 @@
+@use '/styles/abstracts/font';
+@use '/styles/abstracts/palette';
+
 .button {
   $self: #{&};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: font.$font-size-14;
+  font-weight: 500;
+  line-height: 16px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+
+  &.small {
+    padding: 5px 11px;
+  }
+  &.medium {
+    padding: 7px 23px;
+  }
+  &.large {
+    padding: 11px 27px;
+  }
+
+  &.orange {
+    color: #ffffff;
+    background-color: palette.$Orange500;
+  }
+  &.blue {
+    color: #ffffff;
+    background-color: palette.$Blue500;
+  }
+  &.gray {
+    color: #ffffff;
+    background-color: palette.$Gray500;
+  }
+  &.green {
+    color: #ffffff;
+    background-color: palette.$Gray500;
+  }
+  &.violet {
+    color: #ffffff;
+    background-color: palette.$Violet500;
+  }
+
+  /* text */
+
+  &.text {
+    background-color: transparent;
+    color: palette.$Gray900;
+    padding: 0;
+
+    &.orange {
+      color: palette.$Orange600;
+    }
+    &.blue {
+      color: palette.$Blue600;
+    }
+    &.gray {
+      color: palette.$Gray900;
+    }
+    &.green {
+      color: palette.$Gray600;
+    }
+    &.violet {
+      color: palette.$Violet600;
+    }
+  }
+
+  &.underline {
+    text-decoration: underline;
+  }
 }

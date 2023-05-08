@@ -4,11 +4,11 @@
   $self: #{&};
   width: 100%;
 
-  border-top: solid 1px palette.$Grayscale-Gray900;
+  border-top: solid 1px palette.$Gray900;
   thead {
     height: 54px;
-    border-bottom: solid 1px palette.$Grayscale-Gray300;
-    color: palette.$Grayscale-Gray900;
+    border-bottom: solid 1px palette.$Gray300;
+    color: palette.$Gray900;
     font-weight: 700;
     text-align: center;
     th {
@@ -20,11 +20,11 @@
     text-align: center;
 
     tr.--separator {
-      border-bottom: solid 1px palette.$Grayscale-Gray200;
+      border-bottom: solid 1px palette.$Gray200;
     }
 
     tr.--highlight {
-      border: solid 2px palette.$Primary-Orange500;
+      border: solid 2px palette.$Orange500;
     }
 
     td {
