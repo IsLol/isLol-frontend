@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
 import classNames from 'classnames/bind';
+import { ReactNode } from 'react';
 import styles from './index.module.scss';
-import Sidebar from '../Sidebar';
+import { Sidebar, Header } from '../../index';
 
 const cx = classNames.bind(styles);
 
@@ -21,6 +21,7 @@ export const DefaultLayout = ({
 }: DefaultLayoutProps) => {
   return (
     <div className={cx('default-layout')}>
+      <Header />
       {layoutType === 'admin' ? (
         <Sidebar>{children}</Sidebar>
       ) : (
