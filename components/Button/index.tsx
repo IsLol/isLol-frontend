@@ -16,7 +16,7 @@ export interface ButtonProps {
   /** 버튼 스타일 구분 */
   variant?: 'default' | 'text';
   /** 버튼 색상 */
-  color?: 'orange' | 'blue' | 'gray' | 'green' | 'violet';
+  color?: 'orange' | 'blue' | 'gray' | 'green' | 'violet' | 'white';
   /** 비활성화 유무 */
   disabled?: boolean;
   /** 버튼 타입 */
@@ -35,7 +35,7 @@ const Button = forwardRef(function Button(
     className,
     onClick,
     variant = 'default',
-    color = 'blue',
+    color = 'gray',
     disabled = false,
     children,
     size = 'medium',
