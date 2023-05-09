@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import styles from './index.module.scss';
 import classNames from 'classnames/bind';
+import Typography from '@/components/Typography';
 
 export interface MenuItem {
   menuName: string;
@@ -81,13 +82,15 @@ export function Sidebar({ children }: SidebarProps) {
           {LEFT_MENU.map((item) => (
             <li key={item.menuId}>
               <div>
-                <h2>{item.menuName}</h2>
+                <Typography type="H3">{item.menuName}</Typography>
                 <ul>
                   {LEFT_SUB_MENU.map(
                     (subItem) =>
                       item.menuId === subItem.menuId && (
                         <li key={subItem.subMenuId}>
-                          <h3>{subItem.subMenuName}</h3>
+                          <Typography type="B1">
+                            {subItem.subMenuName}
+                          </Typography>
                         </li>
                       )
                   )}
