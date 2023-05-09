@@ -1,0 +1,42 @@
+@use '/styles/abstracts/font';
+@use '/styles/abstracts/palette';
+
+.typography {
+  &--H1 {
+    font-size: font.$font-size-32;
+  }
+  &--H2 {
+    font-size: font.$font-size-28;
+  }
+  &--H3 {
+    font-size: font.$font-size-24;
+  }
+  &--B1 {
+    font-size: font.$font-size-20;
+  }
+  &--B2 {
+    font-size: font.$font-size-18;
+  }
+  &--B3 {
+    font-size: font.$font-size-16;
+  }
+  &--C1 {
+    font-size: font.$font-size-14;
+  }
+  &--C2 {
+    font-size: font.$font-size-12;
+  }
+  &--C3 {
+    font-size: font.$font-size-10;
+  }
+
+  &--regular {
+    font-weight: 300;
+  }
+  &--medium {
+    font-weight: 500;
+  }
+  &--bold {
+    font-weight: 700;
+  }
+}
