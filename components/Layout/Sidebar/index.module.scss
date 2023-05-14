@@ -11,13 +11,42 @@
     width: 250px;
     height: 100%;
     background-color: palette.$Navy900;
-    padding: 1rem;
-    margin-right: 1rem;
     color: #ffffff;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__logo {
+    font-size: 50px !important;
+    padding: 20px 0;
+  }
+
+  &__menu {
+    width: 100%;
+    padding: 0;
+    margin: 0 0 10px 0;
+
+    & > li > h3 {
+      cursor: pointer;
+      padding: 5px 0 5px 50px;
+      & ~ ul {
+        padding-left: 50px;
+        cursor: pointer;
+      }
+    }
+
+    &.sub-menu {
+      padding-left: 70px;
+    }
   }
 
   main {
     flex-grow: 1;
     height: 100%;
+    margin-left: 250px;
   }
 }
