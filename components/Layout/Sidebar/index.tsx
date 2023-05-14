@@ -78,24 +78,32 @@ export function Sidebar({ children }: SidebarProps) {
   return (
     <div className={cx('sidebar')}>
       <aside className={cx('sidebar__aside')}>
-        <ul>
+        <Typography
+          type="H1"
+          tag="div"
+          weight="bold"
+          className={cx('sidebar__logo')}
+        >
+          LOGO
+        </Typography>
+        <ul className={cx('sidebar__menu')}>
           {LEFT_MENU.map((item) => (
             <li key={item.menuId}>
-              <div>
-                <Typography type="H3">{item.menuName}</Typography>
-                <ul>
-                  {LEFT_SUB_MENU.map(
-                    (subItem) =>
-                      item.menuId === subItem.menuId && (
-                        <li key={subItem.subMenuId}>
-                          <Typography type="B1">
-                            {subItem.subMenuName}
-                          </Typography>
-                        </li>
-                      )
-                  )}
-                </ul>
-              </div>
+              <Typography type="B2" tag="h3" weight="bold">
+                {item.menuName}
+              </Typography>
+              <ul className={cx('sidebar__menu', 'sub-menu')}>
+                {LEFT_SUB_MENU.map(
+                  (subItem) =>
+                    item.menuId === subItem.menuId && (
+                      <li key={subItem.subMenuId}>
+                        <Typography type="B3" weight="medium">
+                          {subItem.subMenuName}
+                        </Typography>
+                      </li>
+                    )
+                )}
+              </ul>
             </li>
           ))}
         </ul>

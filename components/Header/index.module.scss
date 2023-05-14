@@ -8,6 +8,11 @@
   align-items: center;
   color: #ffffff;
 
+  &--admin {
+    margin-left: 250px;
+    background-color: palette.$Gray50;
+  }
+
   &__logo {
     padding: 0 100px;
     font-size: 50px;
@@ -15,5 +20,9 @@
   &__nav {
     display: flex;
     gap: 100px;
+    &--admin {
+      padding-left: 100px;
+      color: palette.$Gray900;
+    }
   }
 }
