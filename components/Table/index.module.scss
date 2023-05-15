@@ -4,32 +4,42 @@
   $self: #{&};
   width: 100%;
 
-  border-top: solid 1px palette.$Gray900;
-  thead {
-    height: 54px;
-    border-bottom: solid 1px palette.$Gray300;
-    color: palette.$Gray900;
-    font-weight: 700;
-    text-align: center;
-    th {
-      vertical-align: middle;
-    }
+  &__title {
+    border-left: 3px solid palette.$Gray300;
+    padding-left: 15px;
+    margin-bottom: 25px;
   }
 
-  tbody {
-    text-align: center;
-
-    tr.--separator {
-      border-bottom: solid 1px palette.$Gray200;
+  & > table {
+    width: 100%;
+    border-top: solid 1px palette.$Gray900;
+    thead {
+      height: 54px;
+      border-bottom: solid 1px palette.$Gray300;
+      color: palette.$Gray900;
+      background-color: palette.$Gray100;
+      font-weight: 700;
+      text-align: center;
+      th {
+        vertical-align: middle;
+      }
     }
 
-    tr.--highlight {
-      border: solid 2px palette.$Orange500;
-    }
+    tbody {
+      text-align: center;
 
-    td {
-      vertical-align: middle;
-      word-break: break-all;
+      tr.--separator {
+        border-bottom: solid 1px palette.$Gray200;
+      }
+
+      tr.--highlight {
+        border: solid 2px palette.$Orange500;
+      }
+
+      td {
+        vertical-align: middle;
+        word-break: break-all;
+      }
     }
   }
 }

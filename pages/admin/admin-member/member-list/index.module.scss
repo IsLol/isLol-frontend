@@ -1,0 +1,10 @@
+@use '/styles/abstracts/font';
+@use '/styles/abstracts/palette';
+
+.member-list {
+  &__button-wrap {
+    margin-bottom: 25px;
+    display: flex;
+    gap: 5px;
+  }
+}

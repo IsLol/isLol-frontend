@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import style from './index.module.scss';
 import React, { ReactNode } from 'react';
 import Button from '../Button';
+import Typography from '../Typography';
 
 export interface TableColumn {
   header: ReactNode;
@@ -46,6 +47,8 @@ export interface TableProps {
   gutter?: number;
   /** tr 높이 */
   rowHeight?: number;
+  /** 테이블 타이틀 */
+  title?: ReactNode;
 }
 
 const cx = classNames.bind(style);
@@ -59,80 +62,96 @@ export const Table = ({
   sortItems,
   sortOrder,
   gutter,
-  rowHeight,
+  rowHeight = 30,
+  title,
 }: TableProps) => {
   return (
-    <table className={cx(rootClass, className)}>
-      <thead>
-        <tr>
-          {columns.map(
-            ({ header, width, headerId, isSortable }: TableColumn) => (
-              <th
-                id={headerId}
-                key={headerId}
-                style={{ ...(width && { width: width }) }}
-              >
-                {isSortable ? (
-                  <Button
-                    variant="text"
-                    underline
-                    onClick={() => onSort?.(headerId)}
-                  >
-                    <span>{header}</span>
-                  </Button>
-                ) : (
-                  <span>{header}</span>
-                )}
-              </th>
-            )
-          )}
-        </tr>
-      </thead>
-      <tbody>
-        {rows ? (
-          rows.map(({ items, rowHighlight: thisRowHighlight }, index) => {
-            return (
-              <tr
-                key={index}
-                className={cx({
-                  '--highlight': thisRowHighlight,
-                  '--rowHeight': rowHeight,
-                })}
-              >
-                {items &&
-                  items.map(
-                    (
-                      {
-                        item,
-                        colspan: thisColspan,
-                        rowspan: thisRowspan,
-                        className: thisClassName,
-                      },
-                      i
-                    ) => {
-                      return (
-                        <td
-                          className={thisClassName}
-                          colSpan={thisColspan}
-                          rowSpan={thisRowspan}
-                          key={i}
-                          style={{ paddingBottom: gutter, paddingTop: gutter }}
-                        >
-                          {item}
-                        </td>
-                      );
-                    }
-                  )}
-              </tr>
-            );
-          })
-        ) : (
+    <div className={cx(rootClass)}>
+      {title && (
+        <Typography
+          type="H3"
+          tag="h3"
+          weight="medium"
+          className={cx(`${rootClass}__title`)}
+        >
+          {title}
+        </Typography>
+      )}
+      <table className={cx(className)}>
+        <thead>
           <tr>
-            <td>결과 값이 없습니다.</td>
+            {columns.map(
+              ({ header, width, headerId, isSortable }: TableColumn) => (
+                <th
+                  id={headerId}
+                  key={headerId}
+                  style={{ ...(width && { width: width }) }}
+                >
+                  {isSortable ? (
+                    <Button
+                      variant="text"
+                      underline
+                      onClick={() => onSort?.(headerId)}
+                    >
+                      <span>{header}</span>
+                    </Button>
+                  ) : (
+                    <span>{header}</span>
+                  )}
+                </th>
+              )
+            )}
           </tr>
-        )}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {rows ? (
+            rows.map(({ items, rowHighlight: thisRowHighlight }, index) => {
+              return (
+                <tr
+                  key={index}
+                  className={cx({
+                    '--highlight': thisRowHighlight,
+                  })}
+                  style={{ height: `${rowHeight}px` }}
+                >
+                  {items &&
+                    items.map(
+                      (
+                        {
+                          item,
+                          colspan: thisColspan,
+                          rowspan: thisRowspan,
+                          className: thisClassName,
+                        },
+                        i
+                      ) => {
+                        return (
+                          <td
+                            className={thisClassName}
+                            colSpan={thisColspan}
+                            rowSpan={thisRowspan}
+                            key={i}
+                            style={{
+                              paddingBottom: gutter,
+                              paddingTop: gutter,
+                            }}
+                          >
+                            {item}
+                          </td>
+                        );
+                      }
+                    )}
+                </tr>
+              );
+            })
+          ) : (
+            <tr>
+              <td>결과 값이 없습니다.</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
