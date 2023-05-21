@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import { Inputs, CenterForm } from '@components';
+import { Inputs, CenterForm } from '@islol-components';
 import { useRouter } from 'next/router';
 
 function Login() {

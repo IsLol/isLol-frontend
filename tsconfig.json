@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@components": ["./components/index.tsx"]
+      "@islol-components": ["./components/index.tsx"],
+      "@islol-api": ["./api/index.tsx"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
