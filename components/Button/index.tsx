@@ -30,7 +30,7 @@ export interface ButtonProps {
 
 const cx = classNames.bind(style);
 
-const Button = forwardRef(function Button(
+export const Button = forwardRef(function Button(
   {
     className,
     onClick,

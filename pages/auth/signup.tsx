@@ -1,4 +1,4 @@
-import { Inputs, CenterForm } from '@components';
+import { Inputs, CenterForm } from '@islol-components';
 import { Button } from 'react-bootstrap';
 
 function SiginUp() {
