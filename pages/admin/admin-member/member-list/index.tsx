@@ -2,6 +2,8 @@ import style from './index.module.scss';
 import classNames from 'classnames/bind';
 import { Table } from '@components';
 import Button from '@/components/Button';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 //TODO 임시 데이터
 const COLUMN_LIST = [
@@ -65,6 +67,16 @@ const ROW_LIST = [
 const cx = classNames.bind(style);
 const rootClass = 'member-list';
 export function MemberListPage() {
+  const [memberList, setMemberList] = useState<any>();
+  useEffect(() => {
+    //TODO 백엔드 연동 테스트
+    axios
+      .get('http://localhost:8080/member/member-list')
+      .then((response) => setMemberList(response))
+      .catch((error) => console.log(error));
+
+    console.log(memberList);
+  }, []);
   return (
     <div className={cx(rootClass)}>
       <div className={cx(`${rootClass}__button-wrap`)}>
