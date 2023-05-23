@@ -1,75 +1,65 @@
 import style from './index.module.scss';
 import classNames from 'classnames/bind';
-import { Button, Table } from '@islol-components';
+import { Button, Table, TableColumn } from '@islol-components';
 import { useState } from 'react';
 import { GetServerSideProps } from 'next';
-import { prefetchMemberList } from '@islol-api';
+import { prefetchMemberList, useMemberList } from '@islol-api';
 import { dehydrate } from '@tanstack/react-query';
 
 //TODO 임시 데이터
-const COLUMN_LIST = [
+const COLUMN_LIST: TableColumn[] = [
   {
-    header: '헤더1',
-    headerId: 'H01',
+    header: '계정',
+    headerId: 'account',
   },
   {
-    header: '헤더2',
-    headerId: 'H02',
+    header: '이름',
+    headerId: 'name',
   },
   {
-    header: '헤더3',
-    headerId: 'H03',
-  },
-];
-
-const ROW_LIST = [
-  {
-    items: [
-      {
-        item: '테스트1',
-      },
-      {
-        item: '테스트1',
-      },
-      {
-        item: '테스트1',
-      },
-    ],
+    header: '닉네임',
+    headerId: 'nick',
   },
   {
-    items: [
-      {
-        item: '테스트2',
-      },
-      {
-        item: '테스트2',
-      },
-      {
-        item: '테스트2',
-      },
-    ],
-    rowHighlight: true,
+    header: '현재티어',
+    headerId: 'curTier',
   },
   {
-    items: [
-      {
-        item: '테스트3',
-      },
-      {
-        item: '테스트3',
-      },
-      {
-        item: '테스트3',
-      },
-    ],
+    header: '최고티어',
+    headerId: 'topTier',
+  },
+  {
+    header: '주포지션',
+    headerId: 'mainPosition',
+  },
+  {
+    header: '부포지션',
+    headerId: 'subPosition',
+  },
+  {
+    header: '명예포인트',
+    headerId: 'point',
   },
 ];
 
 const cx = classNames.bind(style);
 const rootClass = 'member-list';
-export function MemberListPage(props: any) {
-  console.log(props);
-  const [memberList, setMemberList] = useState<any>();
+export function MemberListPage() {
+  const { data, refetch, isError, isLoading } = useMemberList();
+
+  //table list 핸들링 함수 제네릭은 공통으로 빼기위해 넣어둠
+  const handleTableRowList = <T extends Record<string, any>>() => {
+    const tableRowList = data.map((member: T) => {
+      return {
+        items: COLUMN_LIST.map((column) => {
+          return {
+            item: member[column.headerId],
+          };
+        }),
+      };
+    });
+    return tableRowList;
+  };
 
   return (
     <div className={cx(rootClass)}>
@@ -79,7 +69,7 @@ export function MemberListPage(props: any) {
       </div>
       <Table
         columns={COLUMN_LIST}
-        rows={ROW_LIST}
+        rows={data && handleTableRowList()}
         title="회원 목록"
         rowHeight={50}
       />

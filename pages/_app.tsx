@@ -19,10 +19,10 @@ export default function App({ Component, pageProps }: AppProps) {
   );
   return (
     <>
-      <Script
+      {/* <Script
         src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
         crossOrigin="anonymous"
-      />
+      /> */}
       <QueryClientProvider client={queryClient}>
         <DefaultLayout>
           <Component {...pageProps} />

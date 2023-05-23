@@ -65,6 +65,7 @@ export const Table = ({
   rowHeight = 30,
   title,
 }: TableProps) => {
+  console.log(rows);
   return (
     <div className={cx(rootClass)}>
       {title && (

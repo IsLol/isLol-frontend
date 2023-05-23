@@ -1,4 +1,4 @@
-import { QueryClient } from '@tanstack/react-query';
+import { QueryClient, useQuery } from '@tanstack/react-query';
 import { getMemberList } from './member.api';
 
 /**
@@ -11,3 +11,6 @@ export const prefetchMemberList = async (): Promise<QueryClient> => {
 
   return queryClient;
 };
+
+export const useMemberList = () =>
+  useQuery(['memberList'], () => getMemberList(), { refetchOnMount: false });
