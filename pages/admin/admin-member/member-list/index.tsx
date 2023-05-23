@@ -47,9 +47,9 @@ const rootClass = 'member-list';
 export function MemberListPage() {
   const { data, refetch, isError, isLoading } = useMemberList();
 
-  //table list 핸들링 함수
-  const handleTableRowList = () => {
-    const tableRowList = data.map((member: any) => {
+  //table list 핸들링 함수 제네릭은 공통으로 빼기위해 넣어둠
+  const handleTableRowList = <T extends Record<string, any>>() => {
+    const tableRowList = data.map((member: T) => {
       return {
         items: COLUMN_LIST.map((column) => {
           return {
