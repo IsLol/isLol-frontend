@@ -1,7 +1,7 @@
 import { TableColumn, TableRow } from '@islol-components';
 
 export const handleTableRowList = <T extends Record<string, any>>(
-  DataList: T,
+  DataList: T[],
   columnList: TableColumn[]
 ): TableRow[] => {
   const tableRowList = DataList.map((member: T) => {
