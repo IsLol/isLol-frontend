@@ -1,12 +1,11 @@
-import style from './index.module.scss';
-import classNames from 'classnames/bind';
-import { Button, Table, TableColumn } from '@islol-components';
-import { useState } from 'react';
-import { GetServerSideProps } from 'next';
 import { prefetchMemberList, useMemberList } from '@islol-api';
+import { Button, Table, TableColumn } from '@islol-components';
+import { handleTableRowList } from '@islol-utils';
 import { dehydrate } from '@tanstack/react-query';
+import classNames from 'classnames/bind';
+import { GetServerSideProps } from 'next';
+import style from './index.module.scss';
 
-//TODO 임시 데이터
 const COLUMN_LIST: TableColumn[] = [
   {
     header: '계정',
@@ -47,20 +46,6 @@ const rootClass = 'member-list';
 export function MemberListPage() {
   const { data, refetch, isError, isLoading } = useMemberList();
 
-  //table list 핸들링 함수 제네릭은 공통으로 빼기위해 넣어둠
-  const handleTableRowList = <T extends Record<string, any>>() => {
-    const tableRowList = data.map((member: T) => {
-      return {
-        items: COLUMN_LIST.map((column) => {
-          return {
-            item: member[column.headerId],
-          };
-        }),
-      };
-    });
-    return tableRowList;
-  };
-
   return (
     <div className={cx(rootClass)}>
       <div className={cx(`${rootClass}__button-wrap`)}>
@@ -69,9 +54,9 @@ export function MemberListPage() {
       </div>
       <Table
         columns={COLUMN_LIST}
-        rows={data && handleTableRowList()}
+        rows={data && handleTableRowList(data, COLUMN_LIST)}
         title="회원 목록"
-        rowHeight={50}
+        rowHeight={70}
       />
     </div>
   );
