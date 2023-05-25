@@ -1,8 +1,9 @@
 import classNames from 'classnames/bind';
-import style from './index.module.scss';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Button from '../Button';
+import { TextField } from '../TextField';
 import Typography from '../Typography';
+import style from './index.module.scss';
 
 export interface TableColumn {
   header: ReactNode;
@@ -49,6 +50,8 @@ export interface TableProps {
   rowHeight?: number;
   /** 테이블 타이틀 */
   title?: ReactNode;
+  /** row 수정여부 */
+  isModify?: boolean;
 }
 
 const cx = classNames.bind(style);
@@ -64,6 +67,7 @@ export const Table = ({
   gutter,
   rowHeight = 30,
   title,
+  isModify = false,
 }: TableProps) => {
   console.log(rows);
   return (
@@ -138,6 +142,7 @@ export const Table = ({
                             }}
                           >
                             {item}
+                            {isModify && <TextField />}
                           </td>
                         );
                       }
