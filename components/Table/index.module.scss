@@ -28,6 +28,10 @@
     tbody {
       text-align: center;
 
+      tr:hover {
+        background-color: palette.$Gray100;
+      }
+
       tr.--separator {
         border-bottom: solid 1px palette.$Gray200;
       }
