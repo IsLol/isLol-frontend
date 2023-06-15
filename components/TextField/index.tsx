@@ -94,7 +94,7 @@ export function TextField(
     ...rest
   } = props;
 
-  return <input />;
+  return <input {...rest} />;
 }
 
 export default forwardRef(TextField);

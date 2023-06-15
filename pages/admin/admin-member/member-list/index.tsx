@@ -9,8 +9,8 @@ import style from './index.module.scss';
 
 const COLUMN_LIST: TableColumn[] = [
   {
-    header: '계정',
-    headerId: 'account',
+    header: '계정(이메일)',
+    headerId: 'email',
   },
   {
     header: '이름',
@@ -18,7 +18,7 @@ const COLUMN_LIST: TableColumn[] = [
   },
   {
     header: '닉네임',
-    headerId: 'nick',
+    headerId: 'nickName',
   },
   {
     header: '현재티어',
