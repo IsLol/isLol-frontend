@@ -14,7 +14,7 @@ export interface TableColumn {
 
 export interface RowItem {
   /** td 내용 */
-  item: ReactNode;
+  item: string;
   /** 세로 병합 */
   colspan?: number;
   /** 가로 병합 */
@@ -141,8 +141,7 @@ export const Table = ({
                               paddingTop: gutter,
                             }}
                           >
-                            {item}
-                            {isModify && <TextField />}
+                            {isModify ? <TextField value={item} /> : item}
                           </td>
                         );
                       }
