@@ -4,7 +4,6 @@ import Button from '../Button';
 import { TextField } from '../TextField';
 import Typography from '../Typography';
 import style from './index.module.scss';
-
 export interface TableColumn {
   header: ReactNode;
   width?: number;
@@ -69,7 +68,6 @@ export const Table = ({
   title,
   isModify = false,
 }: TableProps) => {
-  console.log(rows);
   return (
     <div className={cx(rootClass)}>
       {title && (

@@ -1,10 +1,16 @@
+import { handleTableFormRowList, handleTableRowList } from '@/utils';
 import { prefetchMemberList, useMemberList } from '@islol-api';
-import { Button, Table, TableColumn } from '@islol-components';
-import { handleTableRowList } from '@islol-utils';
+import {
+  Button,
+  FormListType,
+  TableColumn,
+  TableForm,
+} from '@islol-components';
 import { dehydrate } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 import { GetServerSideProps } from 'next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import style from './index.module.scss';
 
 const COLUMN_LIST: TableColumn[] = [
@@ -48,6 +54,18 @@ export function MemberListPage() {
   const { data, refetch, isError, isLoading } = useMemberList();
   const [isModify, setIsModify] = useState<boolean>(false);
 
+  const methods = useForm<FormListType>({
+    defaultValues: {
+      memberList: (data && handleTableRowList(data, COLUMN_LIST)) || [],
+    },
+  });
+
+  useEffect(() => {
+    if (data) {
+      methods.setValue('memberList', handleTableFormRowList(data, COLUMN_LIST));
+    }
+  }, [data]);
+
   return (
     <div className={cx(rootClass)}>
       <div className={cx(`${rootClass}__button-wrap`)}>
@@ -68,13 +86,14 @@ export function MemberListPage() {
 
         <Button>탈퇴</Button>
       </div>
-      <Table
-        columns={COLUMN_LIST}
-        rows={data && handleTableRowList(data, COLUMN_LIST)}
-        title="회원 목록"
-        rowHeight={70}
-        isModify={isModify}
-      />
+      <FormProvider {...methods}>
+        <TableForm
+          columns={COLUMN_LIST}
+          title="회원 목록"
+          rowHeight={70}
+          isModify={isModify}
+        />
+      </FormProvider>
     </div>
   );
 }
