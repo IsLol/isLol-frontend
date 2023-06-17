@@ -13,4 +13,6 @@ export const prefetchMemberList = async (): Promise<QueryClient> => {
 };
 
 export const useMemberList = () =>
-  useQuery(['memberList'], () => getMemberList(), { refetchOnMount: false });
+  useQuery(['memberList'], () => getMemberList(), {
+    refetchOnMount: false,
+  });
