@@ -53,7 +53,7 @@ const rootClass = 'member-list';
 export function MemberListPage() {
   const { data, refetch, isError, isLoading } = useMemberList();
   const [isModify, setIsModify] = useState<boolean>(false);
-
+  console.log(data);
   const methods = useForm<FormListType>({
     defaultValues: {
       memberList: (data && handleTableRowList(data, COLUMN_LIST)) || [],
@@ -66,6 +66,10 @@ export function MemberListPage() {
     }
   }, [data]);
 
+  if (isLoading) {
+    return <div>loading...</div>;
+  }
+
   return (
     <div className={cx(rootClass)}>
       <div className={cx(`${rootClass}__button-wrap`)}>
@@ -73,11 +77,16 @@ export function MemberListPage() {
           color={isModify ? 'orange' : 'blue'}
           onClick={() => {
             if (isModify) {
-              alert(
-                '일괄수정을 취소 하시겠습니까?\n작성했던 내용은 사라지게 됩니다.'
-              );
+              if (
+                confirm(
+                  '일괄수정을 취소 하시겠습니까?\n작성했던 내용은 사라지게 됩니다.'
+                )
+              ) {
+                setIsModify(false);
+              }
+            } else {
+              setIsModify(!isModify);
             }
-            setIsModify(!isModify);
           }}
         >
           {isModify ? '수정취소' : '일괄수정'}

@@ -15,6 +15,7 @@ export const handleTableRowList = <T extends Record<string, any>>(
   });
   return tableRowList;
 };
+
 export const handleTableFormRowList = <T extends Record<string, any>>(
   dataList: T[],
   columnList: TableColumn[]
